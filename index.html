@@ -179,7 +179,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-26 21:36:46 / Modified: 22:27:54" itemprop="dateCreated datePublished" datetime="2022-11-26T21:36:46+08:00">2022-11-26</time>
+      <time title="Created: 2022-11-26 21:36:46 / Modified: 22:56:45" itemprop="dateCreated datePublished" datetime="2022-11-26T21:36:46+08:00">2022-11-26</time>
     </span>
 
   
@@ -209,7 +209,40 @@
 <h3 id="撰写新文章"><a href="#撰写新文章" class="headerlink" title="撰写新文章"></a>撰写新文章</h3><pre><code>hexo n &quot;title&quot;
 </code></pre>
 <p>&amp;emsp;这一步骤会让hexo新建一篇名为 title 的文章。您可以前往<code>source/_posts/</code>目录下查看刚刚新建的文章，格式为<strong>Markdown</strong>。</p>
-
+<h3 id="部署到远端（Github）上公开使用"><a href="#部署到远端（Github）上公开使用" class="headerlink" title="部署到远端（Github）上公开使用"></a>部署到远端（Github）上公开使用</h3><p>&amp;emsp;1.登录自己的 Github。</p>
+<p>&amp;emsp;2.新建一个仓库：</p>
+<p>&amp;emsp;<strong>注意：一定是<code>你的昵称.github.io</code></strong></p>
+<h4 id="继续在-blog-目录下，输入命令行操作"><a href="#继续在-blog-目录下，输入命令行操作" class="headerlink" title="继续在 blog 目录下，输入命令行操作"></a>继续在 blog 目录下，输入命令行操作</h4><p>&amp;emsp;装 Git 部署的插件：<code>cnpm install --save hexo-deployer-git</code></p>
+<p>&amp;emsp;里面的红色警告可以忽略不管。</p>
+<p>&amp;emsp;去 blog 文件下，直接看到一个<code>_config.yml</code>，修改<code>_config.yml</code>即可。注意：blog文件夹下的<strong>其它文件</strong>下也有<code>_config.yml</code>文件，别改错了文件。<br>&amp;emsp;文件的<strong>最底部</strong>修改成这样：</p>
+<p><code>deploy:   type: git   repository: https://github.com/qinghan586/qinghan586.github.io.git   branch: master</code></p>
+<h5 id="注意：deploy-type-repository-branch-后面都有一个英文的空格。"><a href="#注意：deploy-type-repository-branch-后面都有一个英文的空格。" class="headerlink" title="注意：deploy: type: repository: branch: 后面都有一个英文的空格。"></a>注意：<code>deploy: type: repository: branch: </code>后面都有一个<strong>英文的空格</strong>。</h5><p>&amp;emsp;部署到远端：<code>hexo d</code></p>
+<p>&amp;emsp;往远端推成功后，刷新 Github 仓库，发现多了很多东西，这些就是博客内容。</p>
+<h3 id="下载好看的主题："><a href="#下载好看的主题：" class="headerlink" title="下载好看的主题："></a>下载好看的主题：</h3><p>&amp;emsp;好看的 Hexo 主题地址：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
+<p>&amp;emsp;自己来换个主题，克隆到 <code>themes</code> 主题下去：</p>
+<p><code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></p>
+<p><code>git clone https://github.com/volantis-x/hexo-theme-volantis.git themes/volantis</code></p>
+<p>&amp;emsp;现在把主题配置到博客上去：</p>
+<p>&amp;emsp;修改_config.yml文件：</p>
+<p><code>theme: yilia</code></p>
+<p><code>theme: volantis</code></p>
+<p>&amp;emsp;你用哪个主题就换哪个主题的名字，注意名称前面有个英文空格。<br>&amp;emsp;输入以下命令：</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo s</code></p>
+<p>&amp;emsp;推到远端（github）上去：<code>hexo d</code></p>
+<p>&amp;emsp;以上整个过程已经完成了。后续学下 css，然后才会把自己的博客修改的很漂亮。先搭建起来，再考虑博客内容美观的问题。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>&amp;emsp;修改_config.yml文件后，需要把主题配置到博客上去，输入</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo s</code></p>
+<p>&amp;emsp;推到远端（github）上去：<code>hexo d</code></p>
+<p>&amp;emsp;都不行的情况下，可以换成这样的命令再次输入下：</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<p><code>hexo clean</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo deploy</code></p>
+<h1 id="最后，感谢您的阅读。"><a href="#最后，感谢您的阅读。" class="headerlink" title="最后，感谢您的阅读。"></a>最后，感谢您的阅读。</h1>
       
     </div>
 

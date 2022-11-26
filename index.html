@@ -118,12 +118,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -179,7 +179,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-26 21:36:46 / Modified: 21:49:44" itemprop="dateCreated datePublished" datetime="2022-11-26T21:36:46+08:00">2022-11-26</time>
+      <time title="Created: 2022-11-26 21:36:46 / Modified: 22:27:54" itemprop="dateCreated datePublished" datetime="2022-11-26T21:36:46+08:00">2022-11-26</time>
     </span>
 
   
@@ -192,77 +192,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>  关于我使用Hexo搭建了<strong>个人博客</strong>以后，萌生了写作的念头。虽然小张经常骂我，但是<del>我很生气</del>我并没有恨他，因为他对我的编程之路有很大的帮助。今天，我就来<del>跟风</del>撰写一篇如何搭建个人Blog的文章。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/26/A-test-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="QiuLingYan">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="QiuLingYan秋凌烟的博客">
-      <meta itemprop="description" content="A blog by QiuLingYan">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | QiuLingYan秋凌烟的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/26/A-test-blog/" class="post-title-link" itemprop="url">A test blog</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-26 18:59:24 / Modified: 19:00:06" itemprop="dateCreated datePublished" datetime="2022-11-26T18:59:24+08:00">2022-11-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>A test blog！</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&amp;emsp;关于我使用Hexo搭建了<strong>个人博客</strong>以后，萌生了写作的念头。虽然小张经常骂我，但是<del>我很生气</del>我并没有恨他，因为他对我的编程之路有很大的帮助。今天，我就来<del>跟风</del>撰写一篇如何搭建个人Blog的文章。</p>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>&amp;emsp;你需要安装好<a target="_blank" rel="noopener" href="http://nodejs.cn/">Nodejs</a>以及<a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>.</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装cnpm（淘宝源）"><a href="#安装cnpm（淘宝源）" class="headerlink" title="安装cnpm（淘宝源）"></a>安装cnpm（淘宝源）</h3><pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+</code></pre>
+<h3 id="安装hexo-cli"><a href="#安装hexo-cli" class="headerlink" title="安装hexo-cli"></a>安装hexo-cli</h3><pre><code>cnpm install -g hexo-cli
+</code></pre>
+<p>&amp;emsp;可以使用 <strong>hexo -v</strong> 来验证下。</p>
+<h3 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h3><p>&amp;emsp;在指定位置新建文件夹，名字为blog。</p>
+<h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><pre><code>hexo init
+</code></pre>
+<p>&amp;emsp;这一步骤会<strong>初始化博客</strong>。</p>
+<h3 id="启动博客"><a href="#启动博客" class="headerlink" title="启动博客"></a>启动博客</h3><pre><code>hexo s
+</code></pre>
+<p>&amp;emsp;启动博客以后，通过 <code>localhost:4000</code> 来访问自己的博客。访问以后，您将会看到hexo自带的文章。这篇文章介绍了如何使用hexo。</p>
+<h3 id="撰写新文章"><a href="#撰写新文章" class="headerlink" title="撰写新文章"></a>撰写新文章</h3><pre><code>hexo n &quot;title&quot;
+</code></pre>
+<p>&amp;emsp;这一步骤会让hexo新建一篇名为 title 的文章。您可以前往<code>source/_posts/</code>目录下查看刚刚新建的文章，格式为<strong>Markdown</strong>。</p>
 
       
     </div>

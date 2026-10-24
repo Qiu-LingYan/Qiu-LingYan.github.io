@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark" data-page-node-id="kCPGZsg2wPn0OdCpO6KvBF" data-dm-ref="1"><head data-page-node-id="QZEgt3tYcTRRau1tPPoA40">
+<meta charset="UTF-8" data-page-node-id="gqD5MFIiSYoU1dAffakPQV">
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="m7FgNXzQnolXGdfNsuETUj">
+<title>QiuLingYan — Personal Homepage</title>
+<meta name="description" content="QiuLingYan — Student, Python developer, Co-Founder of Yunchu Team. Deep Learning · Quantitative Finance · LLM Agent." data-page-node-id="rW2j8opGHegrLrcLe7l1RD">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/102956980?v=4" data-page-node-id="lNVblRpYvT1k9ZAhzmjAby">
+<link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="ekP9WCwAmsCdfyuEagX02P">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" data-page-node-id="uJMr4ouc7dLhLS4Z14GZME">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" data-page-node-id="8zHVeYJJ2uCROsKClU5P9q">
+<style>
+  /* ============ tokens ============ */
+  :root {
+    --bg: #0f0e0c;
+    --text: #f4f1ea;
+    --muted: #a49c8e;
+    --faint: #6f685c;
+    --line: rgba(244, 241, 234, .13);
+    --line-strong: rgba(244, 241, 234, .24);
+    --surface: rgba(24, 21, 17, .55);
+    --surface-2: rgba(30, 26, 20, .72);
+    --accent: #e3a45c;
+    --accent-2: #c9843a;
+    --accent-soft: rgba(227, 164, 92, .14);
+    --shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    --veil-1: rgba(9, 8, 7, .56);
+    --veil-2: rgba(9, 8, 7, .82);
+    --veil-3: #0f0e0c;
+    --grain: .045;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4efe6;
+    --text: #1b1813;
+    --muted: #6d6457;
+    --faint: #9a9184;
+    --line: rgba(27, 24, 19, .14);
+    --line-strong: rgba(27, 24, 19, .28);
+    --surface: rgba(255, 252, 246, .66);
+    --surface-2: rgba(255, 252, 246, .82);
+    --accent: #a5651c;
+    --accent-2: #8a5416;
+    --accent-soft: rgba(165, 101, 28, .12);
+    --shadow: 0 24px 70px rgba(60, 46, 26, .16);
+    --veil-1: rgba(246, 242, 234, .80);
+    --veil-2: rgba(246, 242, 234, .92);
+    --veil-3: #f4efe6;
+    --grain: .03;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  html, body { margin: 0; }
+  body {
+    font-family: Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--text);
+    background: transparent;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background .4s ease, color .4s ease;
+  }
+
+  /* ============ background ============ */
+  .bg-layer { position: fixed; inset: -12% 0; z-index: -3; overflow: hidden; }
+  .bg-img {
+    position: absolute; inset: 0;
+    background: url("assets/bg.png") center 40% / cover no-repeat;
+    will-change: transform;
+    transform: translate3d(0, 0, 0) scale(1.06);
+  }
+  .bg-veil {
+    position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background:
+      radial-gradient(80% 60% at 78% 22%, rgba(227, 164, 92, .18), transparent 60%),
+      linear-gradient(180deg, var(--veil-1) 0%, var(--veil-2) 46%, var(--veil-3) 100%);
+    transition: background .4s ease;
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: var(--grain);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* ============ shell ============ */
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  ::selection { background: var(--accent); color: #1b1813; }
+
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; pointer-events: none; }
+  .progress i {
+    display: block; height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    box-shadow: 0 0 14px var(--accent);
+    transition: width .08s linear;
+  }
+
+  /* ============ header ============ */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 72%, transparent), color-mix(in srgb, var(--bg) 42%, transparent));
+  }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+  .brand .mark {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: url("https://avatars.githubusercontent.com/u/102956980?v=4") center/cover;
+    box-shadow: 0 0 0 1px var(--line-strong), 0 0 22px var(--accent-soft);
+  }
+  .brand b { font-size: 14.5px; letter-spacing: -.02em; font-weight: 700; }
+  .brand span { font-size: 14.5px; color: var(--muted); font-weight: 400; }
+  .nav { display: flex; align-items: center; gap: 30px; }
+  .nav a {
+    font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color .2s ease;
+  }
+  .nav a:hover { color: var(--text); }
+  .theme-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid var(--line); background: var(--surface);
+    color: var(--text); cursor: pointer; display: grid; place-items: center;
+    font-size: 15px; transition: border-color .2s, transform .2s;
+  }
+  .theme-btn:hover { border-color: var(--line-strong); transform: rotate(12deg); }
+  .theme-btn svg { width: 16px; height: 16px; }
+  :root[data-theme="dark"] .theme-btn .ico-sun { display: none; }
+  :root[data-theme="light"] .theme-btn .ico-moon { display: none; }
+
+  /* ============ hero ============ */
+  .hero { position: relative; padding: clamp(64px, 12vh, 128px) 0 clamp(48px, 9vh, 96px); }
+  .eyebrow {
+    font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .34em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 26px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before { content: ""; width: 42px; height: 1px; background: var(--accent); opacity: .7; }
+  .name {
+    margin: 0; font-weight: 800; letter-spacing: -.065em;
+    font-size: clamp(58px, 12.5vw, 152px); line-height: .9;
+  }
+  .name .thin { color: var(--muted); font-weight: 300; }
+  .name .tail {
+    background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 60%, var(--accent) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    background-size: 200% 100%;
+    animation: sheen 9s ease-in-out infinite;
+  }
+  @keyframes sheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+  .tagline {
+    margin: 30px 0 0; max-width: 560px;
+    font-size: clamp(15px, 1.6vw, 18px); line-height: 1.75; color: var(--muted);
+  }
+  .tagline b { color: var(--text); font-weight: 600; }
+  .tagline .sep { color: var(--faint); margin: 0 8px; }
+
+  .epigraph {
+    margin: 34px 0 0; max-width: 620px; padding-left: 20px;
+    border-left: 1px solid var(--line-strong);
+    font-family: Georgia, "Times New Roman", serif; font-style: italic;
+    font-size: clamp(14px, 1.4vw, 16.5px); line-height: 1.85; color: var(--muted);
+  }
+  .epigraph cite { display: block; margin-top: 8px; font-family: "DM Mono", monospace; font-style: normal; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+
+  .meta {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px; margin: 52px 0 0; padding: 26px 0 0;
+    border-top: 1px solid var(--line); max-width: 760px;
+  }
+  .meta dt {
+    font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 9px;
+  }
+  .meta dd { margin: 0; font-size: 14.5px; font-weight: 600; letter-spacing: -.01em; }
+  .meta dd small { display: block; margin-top: 4px; font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 44px 0 0; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 13px 22px; border-radius: 999px;
+    border: 1px solid var(--line-strong); background: transparent;
+    color: var(--text); text-decoration: none;
+    font-size: 13px; font-weight: 600; letter-spacing: .01em;
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), border-color .25s, background .25s, color .25s;
+  }
+  .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .btn .arw { transition: transform .25s; font-family: "DM Mono", monospace; }
+  .btn:hover .arw { transform: translate(2px, -2px); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #17130d; }
+  .btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+
+  .scroll-hint {
+    margin-top: 64px; display: flex; align-items: center; gap: 12px;
+    font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .scroll-hint .bar { width: 1px; height: 34px; background: linear-gradient(var(--accent), transparent); animation: drip 2.4s ease-in-out infinite; }
+  @keyframes drip { 0%,100% { opacity: .25; transform: scaleY(.55); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
+
+  /* ============ sections ============ */
+  section.block { padding: clamp(72px, 11vh, 120px) 0; border-top: 1px solid var(--line); }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 44px; }
+  .sec-tag {
+    font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .26em;
+    text-transform: uppercase; color: var(--accent); white-space: nowrap;
+  }
+  .sec-title { margin: 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.045em; font-weight: 700; line-height: 1.1; }
+  .sec-sub { margin: 0; color: var(--muted); font-size: 13px; max-width: 320px; text-align: right; }
+
+  /* about */
+  .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: start; }
+  .lede { font-size: clamp(17px, 2vw, 21px); line-height: 1.72; letter-spacing: -.012em; margin: 0 0 22px; font-weight: 400; }
+  .lede b { font-weight: 700; }
+  .lede em { font-style: normal; color: var(--accent); }
+  .about-body p { color: var(--muted); font-size: 14.5px; line-height: 1.85; margin: 0 0 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 8px; }
+  .chip {
+    font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px;
+    transition: color .2s, border-color .2s, background .2s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--line-strong); background: var(--accent-soft); }
+
+  .panel {
+    border: 1px solid var(--line); border-radius: 16px;
+    background: var(--surface); backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    padding: 26px;
+  }
+  .panel .row { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .panel .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .panel .row:first-child { padding-top: 0; }
+  .panel .k { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .panel .v { font-size: 13px; font-weight: 600; text-align: right; }
+
+  /* statement quote */
+  .statement { padding: clamp(88px, 14vh, 150px) 0; border-top: 1px solid var(--line); }
+  .statement .inner { max-width: 860px; margin: 0 auto; text-align: center; }
+  .statement .qmark { font-family: Georgia, serif; font-size: 64px; line-height: 1; color: var(--accent); opacity: .55; margin-bottom: 8px; }
+  .statement blockquote {
+    margin: 0; font-family: Georgia, "Times New Roman", serif; font-style: italic;
+    font-size: clamp(22px, 3.6vw, 40px); line-height: 1.38; letter-spacing: -.02em; font-weight: 400;
+  }
+  .statement blockquote .hl { color: var(--accent); }
+  .statement .attr {
+    margin: 30px 0 0; font-family: "DM Mono", monospace; font-size: 10.5px;
+    letter-spacing: .28em; text-transform: uppercase; color: var(--faint);
+  }
+
+  /* projects */
+  .proj-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .proj {
+    position: relative; display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--line); border-radius: 18px;
+    background: var(--surface); backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    padding: 26px 26px 24px; overflow: hidden;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s, background .4s, box-shadow .4s;
+  }
+  .proj::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(120% 120% at 0% 0%, var(--accent-soft), transparent 55%);
+    opacity: 0; transition: opacity .4s;
+  }
+  .proj:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: var(--shadow); }
+  .proj:hover::after { opacity: 1; }
+  .proj-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .proj-idx { font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .16em; color: var(--faint); }
+  .proj-arrow { font-size: 18px; color: var(--muted); transition: transform .3s, color .3s; }
+  .proj:hover .proj-arrow { transform: translate(3px, -3px); color: var(--accent); }
+  .proj h3 { margin: 0 0 9px; font-size: 21px; letter-spacing: -.03em; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .proj h3 .badge {
+    font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .06em;
+    color: var(--accent); border: 1px solid var(--accent-soft); background: var(--accent-soft);
+    border-radius: 999px; padding: 3px 9px; font-weight: 400;
+  }
+  .proj p { margin: 0 0 18px; font-size: 13.5px; line-height: 1.65; color: var(--muted); }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .proj-tags span {
+    font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--faint);
+    border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px;
+  }
+
+  /* stats ledger */
+  .ledger {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  }
+  .cell {
+    position: relative; padding: clamp(24px, 3vw, 36px) clamp(20px, 2.6vw, 30px);
+    background: var(--surface); backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    transition: background .35s ease;
+  }
+  .cell:hover { background: var(--surface-2); }
+  .cell .num {
+    display: block; font-size: clamp(38px, 5vw, 58px); font-weight: 800;
+    letter-spacing: -.05em; line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .cell .num .u { font-size: .4em; color: var(--accent); font-weight: 600; letter-spacing: 0; margin-left: 3px; vertical-align: .35em; }
+  .cell .lab {
+    display: block; margin-top: 13px; font-family: "DM Mono", monospace;
+    font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint);
+  }
+  .cell .note { display: block; margin-top: 6px; font-size: 11.5px; color: var(--muted); }
+
+  /* links */
+  .links { display: grid; }
+  .link-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 24px 4px; border-bottom: 1px solid var(--line);
+    text-decoration: none; color: inherit;
+    transition: padding .3s cubic-bezier(.2,.7,.2,1), background .3s;
+  }
+  .link-row:first-child { border-top: 1px solid var(--line); }
+  .link-row:hover { padding-left: 16px; padding-right: 16px; background: var(--accent-soft); }
+  .link-row .lname { display: flex; align-items: baseline; gap: 16px; }
+  .link-row .lname b { font-size: clamp(18px, 2.4vw, 26px); letter-spacing: -.03em; font-weight: 700; }
+  .link-row .lname span { font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .link-row .lgo { font-family: "DM Mono", monospace; font-size: 13px; color: var(--muted); transition: transform .3s, color .3s; }
+  .link-row:hover .lgo { transform: translate(4px, -4px); color: var(--accent); }
+
+  /* footer */
+  .site-footer { padding: 64px 0 44px; border-top: 1px solid var(--line); }
+  .site-footer .wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .site-footer .fq {
+    font-family: Georgia, serif; font-style: italic; font-size: 15px; color: var(--muted); margin: 0;
+  }
+  .site-footer .fl { font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin: 0; text-align: right; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* responsive */
+  @media (max-width: 860px) {
+    .nav { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .meta { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+    .sec-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sec-sub { text-align: left; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 20px; }
+    .cta { width: 100%; }
+    .btn { flex: 1 1 auto; justify-content: center; }
+    .site-footer .wrap { flex-direction: column; align-items: flex-start; }
+    .site-footer .fl { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+<style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
+<body data-page-node-id="8aM6rDE6y35GhuYOgrCHhm" style="">
+
+<div class="progress" data-page-node-id="3g3qlAa92SCtW5aczXPb5t"><i id="progressBar" data-page-node-id="08aDMiCEnBMSeJokhRPaaS" style="width: 0%;"></i></div>
+
+<div class="bg-layer" data-page-node-id="8oYeNvqcDp6JCtTGep3PvM"><div class="bg-img" id="bgImg" data-page-node-id="mhQ1AGORZ7unbSVs97BMPB" style="transform: translate3d(0px, 0px, 0px) scale(1.06);"></div></div>
+<div class="bg-veil" data-page-node-id="KwNvaXQBTlUK6QFPlXBIIm"></div>
+<div class="grain" data-page-node-id="TJq25goL4T09IOWXoCebSn"></div>
+
+<header class="site-header" data-page-node-id="CfLBdXObH3txBc43QNT4TS">
+  <div class="wrap" data-page-node-id="9ofG72BlciZ06wHPOB4Mfl">
+    <a class="brand" href="#top" data-page-node-id="kPtwpkBPDSTgnEfAt94ROq">
+      <span class="mark" aria-hidden="true" data-page-node-id="m4Sins2sECNTc5I1lzFr6H"></span>
+      <b data-page-node-id="xabGHmSLUvAQHKZ9MX3lv2">QiuLingYan</b><span data-page-node-id="x4krfCxKtvGQikQvQ67G6A">· 杂记</span>
+    </a>
+    <nav class="nav" aria-label="主导航" data-page-node-id="vHERavNFZlhpJ7XWZ0sywy">
+      <a href="#about" data-page-node-id="5rYrydLOfxy8dD5oiN70Ew">About</a>
+      <a href="#projects" data-page-node-id="FmtHKXfZkCZctSwBZoAPEN">Projects</a>
+      <a href="#stats" data-page-node-id="EKyUJOVOBvAfbL30sNzZfc">Stats</a>
+      <a href="#links" data-page-node-id="qBvq0XGEAce3cAXTIoA1iI">Links</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题" data-page-node-id="AmoiZLJfPREaeZr23Xw5Pd">
+      <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-page-node-id="Gh93mCWZcR5CFM2CdwCeQp"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" data-page-node-id="hSmVwFe4Gx0X3FLtV0TdqS"></path></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-page-node-id="7HL117W6HLurVwA3vVXnxj"><circle cx="12" cy="12" r="4" data-page-node-id="UDazIgfYIJH92mFCpUMdAH"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" data-page-node-id="dfn8fCQdEQfIQ3djlSAnki"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top" data-page-node-id="YZFgorkKVYssOOAbC6o5wD">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" data-page-node-id="8NG7K0uOPB46KPLONu9a4t">
+    <div class="wrap" data-page-node-id="wuZ9fiGvyFKLhOsFr30EUi">
+      <p class="eyebrow" data-page-node-id="rWQ4i3Mz4zvYkSvxcmgfwm">Student — Developer — Co-Founder</p>
+      <h1 class="name" data-page-node-id="NMLtsCdiEHrUuBq1FnWDWj">
+        QiuLing<span class="tail" data-page-node-id="1JRccOFFIyoXPkW3eN3KIo">Yan</span>
+      </h1>
+
+      
+
+      <p class="epigraph" data-page-node-id="EWGGwkRZ9x6ZHcMnvNO7vw">
+        “When the light dyed the leaves golden, a kind of almost painful joy suddenly welled up,
+        as if that light were not merely shining upon the leaves, but penetrating from the deep
+        recesses of time.”
+        <cite data-page-node-id="LqxT64TUhI9FlBk7IBTwA2">— Marcel Proust</cite>
+      </p>
+
+      <dl class="meta" data-page-node-id="SlpiE6rZICiXhwD32wAUzu">
+        <div data-page-node-id="76xJfEyZevxhpwFjRIN5kD"><dt data-page-node-id="6kctApmop13ba5KP8n7LtY">Location</dt><dd data-page-node-id="YWDbDtEL7PuF6GkWyovovX">China Mainland</dd></div>
+        <div data-page-node-id="KOTcXKagIcfn3s1EkLUR92"><dt data-page-node-id="S9SVvytVyER9sWPQIEWeW1">Age</dt><dd data-page-node-id="fFY6V6sNy2JYib4yZKdagN"><span id="age" data-page-node-id="DnPIXS5wFkrUIpvXZL7Pji">16</span> <small data-page-node-id="ohKBGt8z2SoADlbHsakkXC">Born 2010.05.21</small></dd></div>
+        <div data-page-node-id="H0Ai9taLk4tc74MJxGPB2j"><dt data-page-node-id="4Xc7kvGBtZkuH9tFD68jUY">Role</dt><dd data-page-node-id="bt0z4l4utEGuFTj5O2gVZQ">Co-Founder <small data-page-node-id="59swRBVVo8QzhdVkX1ZQvg">@ Yunchu Team</small></dd></div>
+        <div data-page-node-id="GginXrgfAzNhiReBI6mXTU"><dt data-page-node-id="WVX9ZGLk3dfHfjQNTyfa4S">Focus</dt><dd data-page-node-id="vPN3kT6lCf26J2Q372tUd3">Python <small data-page-node-id="wbkXefVoVsm5BuReEyoJ1b">Quant · LLM · Web</small></dd></div>
+      </dl>
+
+      <div class="cta" data-page-node-id="UNBmv0eXLIEfokyVFR25f7">
+        <a class="btn primary" href="https://blog.qiulingyan.top/" target="_blank" rel="noopener" data-page-node-id="90kUaf9ACjLEQ0TRS1DjOb">Read the blog <span class="arw" data-page-node-id="AxmV29Ub0Uv362hrUd1swr">↗</span></a>
+        <a class="btn" href="https://github.com/Qiu-LingYan" target="_blank" rel="noopener" data-page-node-id="HValzfyh6y9aEEnvXdKBvS">GitHub <span class="arw" data-page-node-id="1PxHeEFfz27XtUJSz6gwvH">↗</span></a>
+        <a class="btn" href="mailto:hiyo-qly@foxmail.com" data-page-node-id="7V9z99DGHhntxNwE3F7t70">Email</a>
+        <a class="btn" href="https://t.me/QiuLingYan" target="_blank" rel="noopener" data-page-node-id="aQ9bV42WpZWExxUuTDoKaZ">Telegram</a>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true" data-page-node-id="IZ0FYIdwjB8HLRgpgn55Fu">
+        <span class="bar" data-page-node-id="PCayUtkWeBnZvpLTMBIEgZ"></span> Scroll
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="block" id="about" data-page-node-id="mVYHN3y2CadtCXR2v28LHk">
+    <div class="wrap" data-page-node-id="8aCgEdHNafzBVKE2j8R6EG">
+      <div class="sec-head reveal" data-page-node-id="taEEoWOFHL3lBFymyGqWLx">
+        <div data-page-node-id="YLpSmw8zJYTraYBMpv4JOQ">
+          <div class="sec-tag" data-page-node-id="cB7z9OlbHwJKhALgy2Q7Ov">01 — About</div>
+          <h2 class="sec-title" data-page-node-id="x5cViS8d6MkID8HjQbGGAE">一个用 Python<br data-page-node-id="sbaSMQNb22oNtzste1BDMY">折腾世界的学生</h2>
+        </div>
+        <p class="sec-sub" data-page-node-id="u5BHU6nc9O8X7rirWtJSzz">Deep Learning · Quantitative Finance · LLM Agent · Web</p>
+      </div>
+
+      <div class="about-grid" data-page-node-id="xzB9eBzL7K8ypAzCW3JrPG">
+        <div class="about-body reveal" data-page-node-id="B8L6k2CHWbP6MZ7O7Qjffv">
+          <p class="lede" data-page-node-id="dVhgZOvq4cEUWgCTBsu6m5">
+            我是 <b data-page-node-id="KNcwZ1FddWkQefypXxuTy1">QiuLingYan</b>，一个把好奇心当成燃料的 <em data-page-node-id="NkZXRUxrHNl8GUFrfp4quW"><span class="age-mirror" data-page-node-id="S9pJVG3H9AiIDpQANNWkUJ">16</span> 岁学生</em>。
+            白天写代码，晚上想想那些还没被解决的问题——大约就是我理解的「活着」。
+          </p>
+          <p data-page-node-id="aLarLZsATBZqc3vThLZG3l">
+            作为 <b data-page-node-id="Ps77cOwvZ7ENQAW7Pr2HVB">Yunchu Team</b> 的联合创始人，我参与过电商平台从 0 到 1 的搭建；
+            也写过一个叫 <b data-page-node-id="ImQvwYPq8Ie5VlurAQbtqf">pystaticblog</b> 的 Python 静态博客生成器，用来安放自己那些零碎的想法。
+          </p>
+          <p data-page-node-id="ZgAVtQkY1X6tqmQsFD6GNn">
+            比起把东西做得「能用」，我更在意它是否足够<b data-page-node-id="bS69S57GBuAWLhOJg0FHGN">干净、克制、有质感</b>。
+            这大概也是这个页面存在的理由。
+          </p>
+          <div class="chips" aria-label="研究兴趣" data-page-node-id="NsAhY2Rnf2eWrFcuk9rRCT">
+            <span class="chip" data-page-node-id="5KoK72Y4lhMK7s2GG2V2xL">Deep Learning</span>
+            <span class="chip" data-page-node-id="mzyXSL5ReBc0IHsyCN9aIt">Quantitative Finance</span>
+            <span class="chip" data-page-node-id="HFmAYEYVpvpO59BpmHNr8Y">Discretionary Trading</span>
+            <span class="chip" data-page-node-id="7ipBHO4WyNPWZDXfXAAdh1">LLM Agent</span>
+            <span class="chip" data-page-node-id="48pmfTYrYTggfANa5tM1L8">Web Development</span>
+          </div>
+        </div>
+
+        <aside class="panel reveal" aria-label="基本信息" data-page-node-id="Uc9UdeLDMnCJK1GG305EDZ">
+          <div class="row" data-page-node-id="JmgkhgM3MKqnHVPguohZjs"><span class="k" data-page-node-id="gRFTO2t7RDGa0Bm3zIoQr4">Name</span><span class="v" data-page-node-id="4Vc8oWuvVAMSD30cl9pAqs">QiuLingYan</span></div>
+          <div class="row" data-page-node-id="L1EeKZ5abVLxJhgWv05pJC"><span class="k" data-page-node-id="ie51qVZq1bYkSGyMutV4wP">Location</span><span class="v" data-page-node-id="SaJs7InMsGXmsVjEedy1Aj">China Mainland</span></div>
+          <div class="row" data-page-node-id="B9lopFKGqL8ntAqRNE4npx"><span class="k" data-page-node-id="sslaSPc0jTkpYY77HArzVx">Birthday</span><span class="v" data-page-node-id="2QBaYwIrzHaat9cPSBCtA8">2010.05.21</span></div>
+          <div class="row" data-page-node-id="xm882D2zooNyDpGjIOi2yn"><span class="k" data-page-node-id="VMKHlor2kkoBIk0KmMuAHM">Age</span><span class="v" data-page-node-id="Ej5o33GKGsZxtS4YKfFIV3"><span class="age-mirror" data-page-node-id="jFdMPGfV3JJIjR6KiDXwOp">16</span> years old</span></div>
+          <div class="row" data-page-node-id="orbKmm8du6KQyzSdFLtSbt"><span class="k" data-page-node-id="GBKcsAelQei7nzikmEj1yj">Role</span><span class="v" data-page-node-id="3RHH0xEAktEEyoZiBtftTc">Co-Founder @ Yunchu Team</span></div>
+          <div class="row" data-page-node-id="zBqDBsgE0DJgsJd2Ygvn5F"><span class="k" data-page-node-id="Jrl8VXpcOFpRaW42kWuUua">Blog</span><span class="v" data-page-node-id="JjQDptmIS86W4s4jr4hAcj">blog.qiulingyan.top</span></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATEMENT QUOTE ================= -->
+  <section class="statement" data-page-node-id="WXVFF0dM9HG6LsRRPc4k8H">
+    <div class="wrap" data-page-node-id="gXnjYzQGMKVuVsY7sICoBr">
+      <div class="inner reveal" data-page-node-id="TA22Vhzmwmc4XjO0bxsQ8q">
+        <div class="qmark" aria-hidden="true" data-page-node-id="OYBK5JV7tAIgEAsmnflWv5">“</div>
+        <blockquote data-page-node-id="MYbPEUvjUb8qd0TNZk9eX9">
+          One is bound to be consumed, ultimately, by this
+          <span class="hl" data-page-node-id="8THYIpdcPuKGEBT75gGWGk">decaying politics</span> or this <span class="hl" data-page-node-id="vDsuVB6cD8RJQZ1JrprH7d">pseudo-city</span>.
+        </blockquote>
+        <p class="attr" data-page-node-id="3C4nDAprCFQ4aahpuk46py">— QiuLingYan</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="block" id="projects" data-page-node-id="ysv3xK3t1ryOi9LSm9QiBn">
+    <div class="wrap" data-page-node-id="deWBuH97jD9hjva3DZDVox">
+      <div class="sec-head reveal" data-page-node-id="4LV6xM9AAZD0hA2CujCJUQ">
+        <div data-page-node-id="kPrsNEwUnDqQhOWEmw4C2I">
+          <div class="sec-tag" data-page-node-id="OGLQKcVWuHCgXISM5WjRto">02 — Selected Work</div>
+          <h2 class="sec-title" data-page-node-id="nOTjN0ynUjub0PpszfbuWd">Projects</h2>
+        </div>
+        <p class="sec-sub" data-page-node-id="0iaLhXES0qhxENvrcmJQBI">四个自己还算满意的东西。</p>
+      </div>
+
+      <div class="proj-grid" data-page-node-id="DJiKsRcXK0d07IiJvy9fCw">
+        <a class="proj reveal" href="https://github.com/Yunchu-Team/Yunchu-Shop" target="_blank" rel="noopener" data-page-node-id="aZoUz0oAkAYGWZPARo5sLB">
+          <div class="proj-top" data-page-node-id="oFwuGC7qdXGNf36xmbGybU"><span class="proj-idx" data-page-node-id="uYCJhT1sczykgDE4JJY1Z0">01 / Platform</span><span class="proj-arrow" data-page-node-id="O3jxFDBbkqVZ10itfmMODs">↗</span></div>
+          <h3 data-page-node-id="qhQjQeA1NJchhoqsC7Qwo3">Yunchu-Shop</h3>
+          <p data-page-node-id="0lKPr7AS6z2detpqxB4gwx">为流畅的在线购物与店铺管理而构建的电商平台，从 0 到 1 的完整落地。</p>
+          <div class="proj-tags" data-page-node-id="1XioLzJNPUPJd0fHhu9qjH"><span data-page-node-id="KpHKjaHIJH8wQJbPuotNmA">E-commerce</span><span data-page-node-id="lOXNQsxo8yur3SvdJkCGx8">Team</span><span data-page-node-id="OlK1soDwv9xkEAxNKh27fh">Active</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/Qiu-LingYan/pystaticblog" target="_blank" rel="noopener" data-page-node-id="00Gm1E67sGCCnNS0SJCUVX">
+          <div class="proj-top" data-page-node-id="Ooya7C3XhF8eVnqEourpNb"><span class="proj-idx" data-page-node-id="Rmc4BptO0FXUvlpJBEolvX">02 / Open Source</span><span class="proj-arrow" data-page-node-id="0IHoelI0QMwlwUmlMsanDN">↗</span></div>
+          <h3 data-page-node-id="PCQcSxqs2M1ZdcCPvKB8hs">pystaticblog <span class="badge" data-page-node-id="EJ2WzRPeDLver2ewIZBMjc">★ 4</span></h3>
+          <p data-page-node-id="17mihFSuwfqh2LaCpdckAl">Python 驱动的静态博客生成器，为 GitHub Pages 优化，快、干净、轻量。</p>
+          <div class="proj-tags" data-page-node-id="5Yn5HrhRAYvhyRWJpampXg"><span data-page-node-id="A5YpMcZDtdTIk6DOHArhQL">Python</span><span data-page-node-id="oYXZ2uRcZ1TMGrBjPA3iyX">Static Site</span><span data-page-node-id="2iH6VgdEH6MMfy41RBygwT">OSS</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/Qiu-LingYan/daily" target="_blank" rel="noopener" data-page-node-id="o7HS1Mv0sJ8mXsvIEddiIW">
+          <div class="proj-top" data-page-node-id="PJMQB9tYY49bq73WahqnHd"><span class="proj-idx" data-page-node-id="w0c0yB1HQN2KbiDVDQDnyg">03 / Personal</span><span class="proj-arrow" data-page-node-id="Y1Sc38SmkkoLMi4A5HWxyY">↗</span></div>
+          <h3 data-page-node-id="BC1t4XI4sJRZYiVaFKCnlV">daily</h3>
+          <p data-page-node-id="30CTZCMXlN11CDCEViNVZM">基于 Astro 的个人空间，「我是一只喵——喵喵喵！」。记录，也是存在的一种方式。</p>
+          <div class="proj-tags" data-page-node-id="MSd0RZ6MLPpqqrGQBI5Y6E"><span data-page-node-id="mBZO8RegZiNuMibSMOcNTA">Astro</span><span data-page-node-id="3uHGSnOBHufeRc5gedbDuC">Journal</span></div>
+        </a>
+
+        <a class="proj reveal" href="https://github.com/Qiu-LingYan/TripBot" target="_blank" rel="noopener" data-page-node-id="PKR5X0ObV4DoYAW1lzqZ7w">
+          <div class="proj-top" data-page-node-id="Ygkq0PCiFBvhePtzMEGEDv"><span class="proj-idx" data-page-node-id="BXqyTaFABH0JF85qSIRzoG">04 / Tooling</span><span class="proj-arrow" data-page-node-id="UOlcTLIYGMJfC49mX41v8u">↗</span></div>
+          <h3 data-page-node-id="JGdETDAOlqtcc8hsqYDxGj">TripBot</h3>
+          <p data-page-node-id="4HAu2M1yavBK8RejZHRTfv">拿来存 Trip 的 Python 小机器人——把琐碎的事交给代码。</p>
+          <div class="proj-tags" data-page-node-id="GFwYOqlr4XDl9H2iQQlItt"><span data-page-node-id="AFT1LGBVSRVWVwHtEHXugV">Python</span><span data-page-node-id="xE4SVRCRyDLL96gh7uF3Ku">Bot</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="block" id="stats" data-page-node-id="DC5HJrskGBMNnMl2KN6ovz">
+    <div class="wrap" data-page-node-id="mFqnESEwRMUuXulHYLnmVr">
+      <div class="sec-head reveal" data-page-node-id="kpCtUnH3BiQMcY0iOtcet6">
+        <div data-page-node-id="23HopwoSKURiFsiMCsnWqQ">
+          <div class="sec-tag" data-page-node-id="DOtU2vNR21u3OhkhPjrIJw">03 — Numbers</div>
+          <h2 class="sec-title" data-page-node-id="ovzuswEkjAFgI7SBZlrs4D">By the numbers</h2>
+        </div>
+        <p class="sec-sub" data-page-node-id="5lTcYJRdYW2HW9HRruHwKQ">截至 2026 年 10 月，来自我公开的 GitHub 数据。</p>
+      </div>
+
+      <div class="ledger reveal" data-page-node-id="GDb9QKFk8yfsgP785lvAlk">
+        <div class="cell" data-page-node-id="i4SWTw9DrGf9YAslwJuatG">
+          <span class="num" data-to="13" data-page-node-id="Sm5NFNhh2nAeuDDVb6MIX8">0</span>
+          <span class="lab" data-page-node-id="1EBvyu8jc58s8GAUkEIXEE">Public Repos</span><span class="note" data-page-node-id="UqR17vpnBDD5NvqOOFFLPq">公开仓库</span>
+        </div>
+        <div class="cell" data-page-node-id="5YGL5P1EkYTlpgSBKAHxzP">
+          <span class="num" data-to="19" data-page-node-id="PlLVxQEG3dUAL0WReHPULM">0</span>
+          <span class="lab" data-page-node-id="aUppNQmEOHG68ZAZW5V8Xe">Followers</span><span class="note" data-page-node-id="HTQtFuz05FNVE8A5rGwa1y">关注者</span>
+        </div>
+        <div class="cell" data-page-node-id="NKl5mDIHFH2scKSng0diWE">
+          <span class="num" data-to="22" data-page-node-id="MuBTEAZT0ATzLdaKU9Tgs9">0</span>
+          <span class="lab" data-page-node-id="lWmio67eU8dDF30LnAe0Vc">Following</span><span class="note" data-page-node-id="N8gHQcBSPdYJtUBFoIafp6">正在关注</span>
+        </div>
+        <div class="cell" data-page-node-id="lhv0J6463a1Z78UBGzczEh">
+          <span class="num" data-to="2" data-page-node-id="RLXEltTAEUjD2A2RaGdNoP">0</span>
+          <span class="lab" data-page-node-id="Cy4HJFGh8mJDyOGxmmxR77">Organizations</span><span class="note" data-page-node-id="agF1boGHfAsdH1jHRBn0cM">Yunchu · Chunjiang</span>
+        </div>
+        <div class="cell" data-page-node-id="QBm8PiW6TjIdH0w2EM28sK">
+          <span class="num" data-page-node-id="fsvgTEzyWvO2oQBAi3xSC2">2022</span>
+          <span class="lab" data-page-node-id="xLzfB2mugAaDLoavGll0Tp">On GitHub since</span><span class="note" data-page-node-id="pNodGKc6WZ6CRcZpC1h7Nc">自 2022 年</span>
+        </div>
+        <div class="cell" data-page-node-id="9HCN7TEiDN1N5RSYu8h3HH">
+          <span class="num" data-page-node-id="msqvbRCYaGqESjIsxOO85h"><span data-to="4" data-page-node-id="Sm58eM7DsDkrcEsW9HQH29">0</span><span class="u" data-page-node-id="GvAb40qscygTBy4qtVGjRI">★</span></span>
+          <span class="lab" data-page-node-id="HbXP8tgYKpmsc7A0TOwh9k">Top Repo Stars</span><span class="note" data-page-node-id="nOHyC4iN2sUWt13IdAHeVr">pystaticblog</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LINKS ================= -->
+  <section class="block" id="links" data-page-node-id="c5OAap90FUeeB1ENXxWj62">
+    <div class="wrap" data-page-node-id="jSX4HDsXfzpBnRMAqvZG4M">
+      <div class="sec-head reveal" data-page-node-id="4wQFBR9A7Piug5NYiFHnCI">
+        <div data-page-node-id="p2p0pmICpCYu4zRa1gD5Hn">
+          <div class="sec-tag" data-page-node-id="NF6tAi6uif9upNnTkuU8Ni">04 — Elsewhere</div>
+          <h2 class="sec-title" data-page-node-id="lAzIyVaxIGs2TAFFn8fKRk">找到我</h2>
+        </div>
+        <p class="sec-sub" data-page-node-id="nb1akD27W5nWz1bJ5vDHW8">随便挑一个入口。</p>
+      </div>
+
+      <div class="links reveal" data-page-node-id="KGdlA79jBXz1HC4z1y5qwA">
+        <a class="link-row" href="https://blog.qiulingyan.top/" target="_blank" rel="noopener" data-page-node-id="PRZqi6ZvbyHvBAlBTvuGls">
+          <span class="lname" data-page-node-id="d7tq72g706sR9BEv5jTfrV"><b data-page-node-id="tC42z5Hy0ITscQOcn3bUCu">Blog</b><span data-page-node-id="RKSPGuxyRhvx07kkcGnWT5">blog.qiulingyan.top</span></span>
+          <span class="lgo" data-page-node-id="ZFm8DY4kqPMrayMUnmMEG0">↗</span>
+        </a>
+        <a class="link-row" href="https://github.com/Qiu-LingYan" target="_blank" rel="noopener" data-page-node-id="iLussQkmpJd4swd6OyEKLh">
+          <span class="lname" data-page-node-id="usmysNNIUDZqtU1w6QaMHV"><b data-page-node-id="JoZnUzJhYmbEuXH5EukWFX">GitHub</b><span data-page-node-id="iWC4BuuJQsMxVmoaOYR2VR">@Qiu-LingYan</span></span>
+          <span class="lgo" data-page-node-id="5AA9EKAh8MHTItqoKI9akh">↗</span>
+        </a>
+        <a class="link-row" href="mailto:hiyo-qly@foxmail.com" data-page-node-id="YH107QJKZ4oMrA2kQh8wB3">
+          <span class="lname" data-page-node-id="Nfh4BGLCdH0MNVAao8u8Av"><b data-page-node-id="WjkMitTrVuIV7EJTZDINEe">Email</b><span data-page-node-id="doL3VwBRv82Ao5knj4r9FD">hiyo-qly@foxmail.com</span></span>
+          <span class="lgo" data-page-node-id="ZmXoZxGsF4c8XXsXu7Yzlj">↗</span>
+        </a>
+        <a class="link-row" href="https://t.me/QiuLingYan" target="_blank" rel="noopener" data-page-node-id="6L8hIdv20eOogK0Ww6aKmb">
+          <span class="lname" data-page-node-id="sHKhwqexTNZxA6GgOwDYlS"><b data-page-node-id="xWXD4DReDwgqpOcrtCSMHB">Telegram</b><span data-page-node-id="iIqxlErF8xhwS6DECsjpGw">@QiuLingYan</span></span>
+          <span class="lgo" data-page-node-id="ZSMzpVKLZmF8bGVDg8KZ8T">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" data-page-node-id="rsZLYkQg2nDqukkNJcV0fb">
+  <div class="wrap" data-page-node-id="LGsMbiPW8QcArJNgUPJrT0">
+    <p class="fq" data-page-node-id="BgJIKo0zUcaG2baJX3tmpC">Farewell. Forever.</p>
+    <p class="fl" data-page-node-id="MrRaek8tH2bH8ZIsFYPo5R">© <span id="year" data-page-node-id="GihmeIuPU5dlfPQJybJEwF">2026</span> QiuLingYan · China Mainland</p>
+  </div>
+</footer>
+
+<script>
+  /* ---------- age from 2010-05-21 ---------- */
+  (function () {
+    var birth = new Date(2010, 4, 21); // month is 0-indexed: 4 = May
+    var now = new Date();
+    var age = now.getFullYear() - birth.getFullYear();
+    var m = now.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+    document.getElementById('age').textContent = age;
+    document.querySelectorAll('.age-mirror').forEach(function (el) { el.textContent = age; });
+  })();
+
+  /* ---------- year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- theme ---------- */
+  (function () {
+    var root = document.documentElement;
+    var saved = localStorage.getItem('qly-theme');
+    if (saved) root.dataset.theme = saved;
+    document.getElementById('themeBtn').addEventListener('click', function () {
+      var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('qly-theme', next);
+    });
+  })();
+
+  /* ---------- reveal on scroll ---------- */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* ---------- scroll progress ---------- */
+  (function () {
+    var bar = document.getElementById('progressBar');
+    if (!bar) return;
+    function update() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? window.scrollY / h : 0;
+      bar.style.width = (Math.min(Math.max(p, 0), 1) * 100) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* ---------- count-up ---------- */
+  (function () {
+    var nums = document.querySelectorAll('[data-to]');
+    if (!nums.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function run(el) {
+      var to = parseInt(el.dataset.to, 10) || 0;
+      if (reduce) { el.textContent = to; return; }
+      var dur = 1200, t0 = null;
+      function step(t) {
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / dur, 1);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(to * e);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var ledger = document.querySelector('.ledger');
+    if (!ledger || !('IntersectionObserver' in window)) { nums.forEach(run); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { nums.forEach(run); io.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    io.observe(ledger);
+  })();
+
+  /* ---------- subtle parallax ---------- */
+  (function () {
+    var img = document.getElementById('bgImg');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var raf = null;
+    function onScroll() {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        var y = window.scrollY * 0.06;
+        img.style.transform = 'translate3d(0,' + (-y) + 'px,0) scale(1.06)';
+        raf = null;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+
+
+</body></html>

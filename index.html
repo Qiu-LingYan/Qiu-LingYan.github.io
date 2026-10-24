@@ -218,6 +218,11 @@
   .lede em { font-style: normal; color: var(--accent); }
   .about-body p { color: var(--muted); font-size: 14.5px; line-height: 1.85; margin: 0 0 16px; }
   .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 8px; }
+  .signoff {
+    margin: 40px 0 0; padding-top: 22px; border-top: 1px solid var(--line);
+    font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--faint);
+  }
   .chip {
     font-family: "DM Mono", monospace; font-size: 10.5px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--muted);
@@ -438,7 +443,7 @@
       <div class="sec-head reveal">
         <div>
           <div class="sec-tag">01 — About</div>
-          <h2 class="sec-title">一个用 Python<br>折腾世界的学生</h2>
+          <h2 class="sec-title">把想法<br>做成东西</h2>
         </div>
         <p class="sec-sub">Deep Learning · Quantitative Finance · LLM Agent · Web</p>
       </div>
@@ -446,16 +451,10 @@
       <div class="about-grid">
         <div class="about-body reveal">
           <p class="lede">
-            我是 <b>QiuLingYan</b>，一个把好奇心当成燃料的 <em><span class="age-mirror">16</span> 岁学生</em>。
-            白天写代码，晚上想想那些还没被解决的问题——大约就是我理解的「活着」。
+            <b>QiuLingYan</b>，<span class="age-mirror">16</span> 岁。写 Python，做产品。
           </p>
           <p>
-            作为 <b>Yunchu Team</b> 的联合创始人，我参与过电商平台从 0 到 1 的搭建；
-            也写过一个叫 <b>pystaticblog</b> 的 Python 静态博客生成器，用来安放自己那些零碎的想法。
-          </p>
-          <p>
-            比起把东西做得「能用」，我更在意它是否足够<b>干净、克制、有质感</b>。
-            这大概也是这个页面存在的理由。
+            Yunchu Team 联合创始人。偏爱克制的设计、干净的代码，和能长期跑下去的东西。
           </p>
           <div class="chips" aria-label="研究兴趣">
             <span class="chip">Deep Learning</span>
@@ -464,6 +463,8 @@
             <span class="chip">LLM Agent</span>
             <span class="chip">Web Development</span>
           </div>
+
+          <p class="signoff">Now — building products, reading markets</p>
         </div>
 
         <aside class="panel reveal" aria-label="基本信息">
